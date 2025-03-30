@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/QC Journey/Scenes/MenuScene.unity
+    guid: 06b8c743660f64a499d445494d4067ca
+  - enabled: 1
+    path: Assets/QC Journey/Scenes/GameScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/QC Journey/Scenes/SettingInGameScene.unity
+    guid: 84058b0792866f14c8059f7d795b2c4d
+  - enabled: 1
+    path: Assets/QC Journey/Scenes/SettingScene.unity
+    guid: 5e11a846978f98d458db2f738ab538c1
   m_configObjects: {}
