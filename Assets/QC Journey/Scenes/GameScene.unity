@@ -538,19 +538,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3215003334246844648, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3215003334246844648, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215003334246844648, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 265.2428
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215003334246844648, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 114.6195
       objectReference: {fileID: 0}
     - target: {fileID: 3215003334246844648, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 153.76
       objectReference: {fileID: 0}
     - target: {fileID: 3215003334246844648, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851335041758975763, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+      propertyPath: m_Name
+      value: Personal Progress
       objectReference: {fileID: 0}
     - target: {fileID: 4093013019592118090, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
       propertyPath: m_Pivot.x
@@ -632,6 +644,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4274972591618622462, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+      propertyPath: m_Name
+      value: Personal Progress TitleText (TMP)
+      objectReference: {fileID: 0}
     - target: {fileID: 4452384926789359210, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
       propertyPath: m_Name
       value: Game Scene Element
@@ -667,6 +683,11 @@ PrefabInstance:
     - target: {fileID: 5333276301699017985, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991821767399776371, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+      propertyPath: m_text
+      value: "\u201CMy History\u201D\n\n\u201CMy Rewards Log\u201D\n\n\u201CMilestone
+        Tracker\u201D"
       objectReference: {fileID: 0}
     - target: {fileID: 6473739741811935799, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
       propertyPath: m_AnchorMax.y
@@ -744,24 +765,40 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 111109049}
+    - target: {fileID: 8713300443157591787, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+      propertyPath: m_text
+      value: Personal Progress
+      objectReference: {fileID: 0}
     - target: {fileID: 8810978050479283799, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8810978050479283799, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810978050479283799, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 276.0393
       objectReference: {fileID: 0}
     - target: {fileID: 8810978050479283799, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 153.76
       objectReference: {fileID: 0}
     - target: {fileID: 8810978050479283799, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -288.01965
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 4125794084419332951, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 8023169440322867903, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+    - {fileID: 6237609784828808063, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+    - {fileID: 2434754327664179426, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+    - {fileID: 364159378357807414, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+    - {fileID: 3402100848399198860, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+    - {fileID: 6169935059683272160, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
+    - {fileID: 5047611192176554444, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9dfb1cc64e0c4e4295bce476c166b31, type: 3}
