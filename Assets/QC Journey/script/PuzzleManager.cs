@@ -31,6 +31,7 @@ public class PuzzleManager : MonoBehaviour
 
     void Awake()
     {
+        ShowAlert("Find the incorrect items in the lab!");
         instance = this;
     }
 
@@ -38,6 +39,8 @@ public class PuzzleManager : MonoBehaviour
     {
         foundItems++;
         UpdateProgress();
+
+        ShowAlert("You Found it.");
 
         if (foundItems >= totalIncorrectItems)
         { 
@@ -75,7 +78,18 @@ public class PuzzleManager : MonoBehaviour
     {
         alertText.text = message;
         alertText.alpha = 1;
-        yield return new WaitForSeconds(alertDuration);
+
+        yield return new WaitForSeconds(alertDuration); 
+
+        float fadeTime = 1f;
+        float t = 0f;
+        while (t < fadeTime)
+        {
+            t += Time.deltaTime;
+            alertText.alpha = Mathf.Lerp(1, 0, t / fadeTime);
+            yield return null;
+        }
+
         alertText.text = "";
         alertText.alpha = 0;
     }
