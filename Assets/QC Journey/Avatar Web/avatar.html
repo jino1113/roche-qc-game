@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Avatar Generator</title>
+  <script src="avataaars.js"></script>
+</head>
+<body>
+  <div id="avatarContainer"></div>
+
+  <script>
+    // 🧠 สร้าง Avatar SVG
+    const svg = Avataaars.create();
+    document.getElementById("avatarContainer").innerHTML = svg;
+
+    // 🧪 แปลง SVG เป็น Blob แล้วแปลงเป็น PNG ผ่าน <canvas>
+    const svgBlob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
+    const url = URL.createObjectURL(svgBlob);
+
+    const img = new Image();
+    img.src = url;
+
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 264;
+      canvas.height = 280;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+
+      const pngDataUrl = canvas.toDataURL("image/png");
+
+      // ✅ ส่งภาพ base64 ไปหา Unity (WebGL)
+      if (typeof SendAvatarImage !== 'undefined') {
+        ReceiveAvatarImage(pngDataUrl); // <-- เรียกฟังก์ชันจาก .jslib
+      } else {
+        // ⬇️ ถ้าไม่ใช่ WebGL หรือยังไม่ได้เชื่อม Unity — ให้ดาวน์โหลดแทน
+        const link = document.createElement("a");
+        link.href = pngDataUrl;
+        link.download = "avatar.png";
+        link.textContent = "⬇️ Download PNG";
+        document.body.appendChild(link);
+      }
+    };
+  </script>
+</body>
+</html>
