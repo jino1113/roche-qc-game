@@ -8,11 +8,11 @@
   <div id="avatarContainer"></div>
 
   <script>
-    // 🧠 สร้าง Avatar SVG
+    // สร้าง Avatar SVG
     const svg = Avataaars.create();
     document.getElementById("avatarContainer").innerHTML = svg;
 
-    // 🧪 แปลง SVG เป็น Blob แล้วแปลงเป็น PNG ผ่าน <canvas>
+    // แปลง SVG เป็น Blob แล้วแปลงเป็น PNG ผ่าน <canvas>
     const svgBlob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
     const url = URL.createObjectURL(svgBlob);
 
@@ -28,11 +28,11 @@
 
       const pngDataUrl = canvas.toDataURL("image/png");
 
-      // ✅ ส่งภาพ base64 ไปหา Unity (WebGL)
+      // ส่งภาพ base64 ไปหา Unity (WebGL)
       if (typeof SendAvatarImage !== 'undefined') {
         ReceiveAvatarImage(pngDataUrl); // <-- เรียกฟังก์ชันจาก .jslib
       } else {
-        // ⬇️ ถ้าไม่ใช่ WebGL หรือยังไม่ได้เชื่อม Unity — ให้ดาวน์โหลดแทน
+        // ถ้าไม่ใช่ WebGL หรือยังไม่ได้เชื่อม Unity — ให้ดาวน์โหลดแทน
         const link = document.createElement("a");
         link.href = pngDataUrl;
         link.download = "avatar.png";
