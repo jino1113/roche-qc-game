@@ -30,7 +30,7 @@
 
       // ส่งภาพ base64 ไปหา Unity (WebGL)
       if (typeof SendAvatarImage !== 'undefined') {
-        ReceiveAvatarImage(pngDataUrl); // <-- เรียกฟังก์ชันจาก .jslib
+        ReceiveAvatarImage(pngDataUrl); // เรียกฟังก์ชันจาก .jslib
       } else {
         // ถ้าไม่ใช่ WebGL หรือยังไม่ได้เชื่อม Unity — ให้ดาวน์โหลดแทน
         const link = document.createElement("a");
