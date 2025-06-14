@@ -1,45 +1,267 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Avatar Generator</title>
+  <meta charset="UTF-8">
+  <title>Custom Avatar Generator</title>
   <script src="avataaars.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      padding: 20px;
+    }
+    #avatarContainer {
+      margin: 0 auto 20px auto;
+      width: 132px;
+      height: 140px;
+    }
+    .dropdown-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .form-group {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    select {
+      width: 100%;
+      font-size: 16px;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button, a {
+      margin: 20px 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
+  <h2>Custom Avatar Generator</h2>
   <div id="avatarContainer"></div>
 
+  <div class="dropdown-grid">
+    <div class="form-group">
+      <label>Top (Hair Style):
+        <select id="top">
+          <option value="dreads01">Dreads 01</option>
+          <option value="dreads02">Dreads 02</option>
+          <option value="frizzle">Frizzle</option>
+          <option value="shaggyMullet">Shaggy Mullet</option>
+          <option value="shaggy">Shaggy</option>
+          <option value="shortCurly">Short Curly</option>
+          <option value="shortFlat">Short Flat</option>
+          <option value="shortRound">Short Round</option>
+          <option value="sides">Sides</option>
+          <option value="shortWaved">Short Waved</option>
+          <option value="theCaesarAndSidePart">Caesar & Side Part</option>
+          <option value="theCaesar">Caesar</option>
+          <option value="bigHair">Big Hair</option>
+          <option value="bob">Bob</option>
+          <option value="bun">Bun</option>
+          <option value="curly">Curly</option>
+          <option value="curvy">Curvy</option>
+          <option value="dreads">Dreads</option>
+          <option value="frida">Frida</option>
+          <option value="froAndBand">Fro & Band</option>
+          <option value="fro">Fro</option>
+          <option value="longButNotTooLong">Long But Not Too Long</option>
+          <option value="miaWallace">Mia Wallace</option>
+          <option value="shavedSides">Shaved Sides</option>
+          <option value="straightAndStrand">Straight & Strand</option>
+          <option value="straight01">Straight 01</option>
+          <option value="straight02">Straight 02</option>
+          <option value="eyepatch">Eyepatch</option>
+          <option value="turban">Turban</option>
+          <option value="hijab">Hijab</option>
+          <option value="hat">Hat</option>
+          <option value="winterHat01">Winter Hat 01</option>
+          <option value="winterHat02">Winter Hat 02</option>
+          <option value="winterHat03">Winter Hat 03</option>
+          <option value="winterHat04">Winter Hat 04</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Hair Color:
+        <select id="hairColor">
+          <option value="auburn">Auburn</option>
+          <option value="black">Black</option>
+          <option value="blonde">Blonde</option>
+          <option value="blondeGolden">Blonde Golden</option>
+          <option value="brown">Brown</option>
+          <option value="brownDark">Brown Dark</option>
+          <option value="pastelPink">Pastel Pink</option>
+          <option value="platinum">Platinum</option>
+          <option value="red">Red</option>
+          <option value="silverGray">Silver Gray</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Skin:
+        <select id="skin">
+          <option value="tanned">Tanned</option>
+          <option value="yellow">Yellow</option>
+          <option value="pale">Pale</option>
+          <option value="light">Light</option>
+          <option value="brown">Brown</option>
+          <option value="darkBrown">Dark Brown</option>
+          <option value="black">Black</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Eyes:
+        <select id="eyes">
+          <option value="default">Default</option>
+          <option value="squint">Squint</option>
+          <option value="closed">Closed</option>
+          <option value="cry">Cry</option>
+          <option value="eyeRoll">Eye Roll</option>
+          <option value="happy">Happy</option>
+          <option value="hearts">Hearts</option>
+          <option value="side">Side</option>
+          <option value="surprised">Surprised</option>
+          <option value="wink">Wink</option>
+          <option value="winkWacky">Wink Wacky</option>
+          <option value="xDizzy">XDizzy</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Eyebrows:
+        <select id="eyebrows">
+          <option value="defaultNatural">Default Natural</option>
+          <option value="angryNatural">Angry Natural</option>
+          <option value="flatNatural">Flat Natural</option>
+          <option value="frownNatural">Frown Natural</option>
+          <option value="raisedExcitedNatural">Raised Excited Natural</option>
+          <option value="sadConcernedNatural">Sad Concerned Natural</option>
+          <option value="unibrowNatural">Unibrow Natural</option>
+          <option value="upDownNatural">Up Down Natural</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Mouth:
+        <select id="mouth">
+          <option value="default">Default</option>
+          <option value="concerned">Concerned</option>
+          <option value="disbelief">Disbelief</option>
+          <option value="eating">Eating</option>
+          <option value="grimace">Grimace</option>
+          <option value="sad">Sad</option>
+          <option value="screamOpen">Scream Open</option>
+          <option value="serious">Serious</option>
+          <option value="smile">Smile</option>
+          <option value="tongue">Tongue</option>
+          <option value="twinkle">Twinkle</option>
+          <option value="vomit">Vomit</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Clothing:
+        <select id="clothing">
+          <option value="shirtCrewNeck">Shirt Crew Neck</option>
+          <option value="hoodie">Hoodie</option>
+          <option value="overall">Overall</option>
+          <option value="blazerAndSweater">Blazer & Sweater</option>
+          <option value="collarAndSweater">Collar & Sweater</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Clothing Color:
+        <select id="clothingColor">
+          <option value="black">Black</option>
+          <option value="blue02">Blue 02</option>
+          <option value="red">Red</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Accessories:
+        <select id="accessories">
+          <option value="none">None</option>
+          <option value="sunglasses">Sunglasses</option>
+          <option value="round">Round</option>
+          <option value="kurt">Kurt</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Style:
+        <select id="style">
+          <option value="circle">Circle</option>
+          <option value="transparent">Transparent</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <div>
+    <button onclick="generateAvatar()">Generate Avatar</button>
+    <a id="downloadLink" href="#" download="avatar.png">Download Avatar</a>
+  </div>
+
   <script>
-    // สร้าง Avatar SVG
-    const svg = Avataaars.create();
-    document.getElementById("avatarContainer").innerHTML = svg;
+    function generateAvatar() {
+  const options = {
+    top: document.getElementById('top').value,
+    hairColor: document.getElementById('hairColor').value,
+    skin: document.getElementById('skin').value,
+    eyes: document.getElementById('eyes').value,
+    eyebrows: document.getElementById('eyebrows').value,
+    mouth: document.getElementById('mouth').value,
+    clothing: document.getElementById('clothing').value,
+    clothingColor: document.getElementById('clothingColor').value,
+    accessories: document.getElementById('accessories').value,
+    style: document.getElementById('style').value,
+  };
 
-    // แปลง SVG เป็น Blob แล้วแปลงเป็น PNG ผ่าน <canvas>
-    const svgBlob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
-    const url = URL.createObjectURL(svgBlob);
+  const svg = Avataaars.create(options);
+  document.getElementById("avatarContainer").innerHTML = svg;
 
-    const img = new Image();
-    img.src = url;
+  const serializer = new XMLSerializer();
+  const svgString = serializer.serializeToString(document.querySelector("svg"));
+  const svgBlob = new Blob([svgString], { type: "image/svg+xml" });
+  const url = URL.createObjectURL(svgBlob);
 
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = 264;
-      canvas.height = 280;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 132;
+    canvas.height = 140;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    const base64 = canvas.toDataURL("image/png");
 
-      const pngDataUrl = canvas.toDataURL("image/png");
+    // ⬇️ สำคัญตรงนี้ ⬇️
+    location.href = "avatar:" + base64.split(',')[1];
+  };
+  img.src = url;
+}
 
-      // ส่งภาพ base64 ไปหา Unity (WebGL)
-      if (typeof SendAvatarImage !== 'undefined') {
-        ReceiveAvatarImage(pngDataUrl); // เรียกฟังก์ชันจาก .jslib
-      } else {
-        // ถ้าไม่ใช่ WebGL หรือยังไม่ได้เชื่อม Unity — ให้ดาวน์โหลดแทน
-        const link = document.createElement("a");
-        link.href = pngDataUrl;
-        link.download = "avatar.png";
-        link.textContent = "⬇️ Download PNG";
-        document.body.appendChild(link);
-      }
-    };
+
+    window.onload = generateAvatar;
   </script>
 </body>
 </html>

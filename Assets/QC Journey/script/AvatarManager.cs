@@ -10,43 +10,36 @@ public class AvatarManager : MonoBehaviour
     void Start()
     {
         string path = Path.Combine(Application.persistentDataPath, "avatar.png");
-        Debug.Log("Avatar path: " + path);
-
         if (File.Exists(path))
         {
             byte[] bytes = File.ReadAllBytes(path);
             Texture2D tex = new Texture2D(2, 2);
             tex.LoadImage(bytes);
             avatarDisplay.texture = tex;
-            Debug.Log("Loaded avatar: " + path);
-        }
-        else
-        {
-            Debug.LogWarning("avatar.png not found at: " + path);
         }
     }
 
-
     public void ReceiveFromWeb(string base64)
     {
-        Debug.Log("Received base64 avatar from web");
+        string clean = base64.Replace("data:image/png;base64,", "");
+        byte[] bytes = Convert.FromBase64String(clean);
+        Texture2D tex = new Texture2D(2, 2);
+        tex.LoadImage(bytes);
+        avatarDisplay.texture = tex;
 
-        try
-        {
-            string clean = base64.Replace("data:image/png;base64,", "");
-            byte[] bytes = Convert.FromBase64String(clean);
+        string path = Path.Combine(Application.persistentDataPath, "avatar.png");
+        File.WriteAllBytes(path, bytes);
+    }
 
-            Texture2D tex = new Texture2D(2, 2);
-            tex.LoadImage(bytes);
-            avatarDisplay.texture = tex;
+#if UNITY_WEBGL && !UNITY_EDITOR
+    [System.Runtime.InteropServices.DllImport("__Internal")]
+    private static extern void SendAvatarOptions(string topType, string hairColor, string skinColor);
+#endif
 
-            string path = Path.Combine(Application.persistentDataPath, "avatar.png");
-            File.WriteAllBytes(path, bytes);
-            Debug.Log("Avatar saved at: " + path);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Failed to save avatar: " + e.Message);
-        }
+    public void SendOptions(string topType, string hairColor, string skinColor)
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        SendAvatarOptions(topType, hairColor, skinColor);
+#endif
     }
 }
