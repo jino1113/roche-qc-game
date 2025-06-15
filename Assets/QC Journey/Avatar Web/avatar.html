@@ -223,49 +223,60 @@
   </div>
 
   <script>
-    
-    function generateAvatar() {
-  const options = {
-    top: document.getElementById('top').value,
-    hairColor: document.getElementById('hairColor').value,
-    skin: document.getElementById('skin').value,
-    eyes: document.getElementById('eyes').value,
-    eyebrows: document.getElementById('eyebrows').value,
-    mouth: document.getElementById('mouth').value,
-    clothing: document.getElementById('clothing').value,
-    clothingColor: document.getElementById('clothingColor').value,
-    accessories: document.getElementById('accessories').value,
-    style: document.getElementById('style').value,
-  };
+  function generateAvatar() {
+    const options = {
+      top: document.getElementById('top').value,
+      hairColor: document.getElementById('hairColor').value,
+      skin: document.getElementById('skin').value,
+      eyes: document.getElementById('eyes').value,
+      eyebrows: document.getElementById('eyebrows').value,
+      mouth: document.getElementById('mouth').value,
+      clothing: document.getElementById('clothing').value,
+      clothingColor: document.getElementById('clothingColor').value,
+      accessories: document.getElementById('accessories').value,
+      style: document.getElementById('style').value,
+    };
 
-  const svg = Avataaars.create(options);
-  document.getElementById("avatarContainer").innerHTML = svg;
+    const svg = Avataaars.create(options);
+    document.getElementById("avatarContainer").innerHTML = svg;
 
-  const serializer = new XMLSerializer();
-  const svgString = serializer.serializeToString(document.querySelector("svg"));
-  const svgBlob = new Blob([svgString], { type: "image/svg+xml" });
-  const url = URL.createObjectURL(svgBlob);
+    const serializer = new XMLSerializer();
+    const svgString = serializer.serializeToString(document.querySelector("svg"));
+    const svgBlob = new Blob([svgString], { type: "image/svg+xml" });
+    const url = URL.createObjectURL(svgBlob);
 
-  const img = new Image();
-  img.onload = () => {
-    const canvas = document.createElement("canvas");
-    canvas.width = 132;
-    canvas.height = 140;
-    const ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-    const base64 = canvas.toDataURL("image/png");
+    const img = new Image();
+    img.crossOrigin = "anonymous"; // ✅ จำเป็นสำหรับเบราว์เซอร์บางตัว
 
-    // 🔥 ส่ง base64 ไป Unity ผ่าน WebViewObject
-    if (window.Unity) {
-      window.Unity.call("avatar:" + base64.split(',')[1]);
-    } else {
-      console.warn("Unity WebViewObject not available.");
-    }
-  };
-  img.src = url;
-}
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = 132;
+      canvas.height = 140;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
 
-    window.onload = generateAvatar;
-  </script>
+      const base64 = canvas.toDataURL("image/png");
+
+      // ✅ ทำให้ลิงก์ดาวน์โหลดภาพทำงาน
+      const downloadLink = document.getElementById("downloadLink");
+      downloadLink.href = base64;
+
+      // ✅ ส่งภาพ base64 ไปให้ Unity ผ่าน WebViewObject
+      if (window.Unity && typeof window.Unity.call === "function") {
+        window.Unity.call("avatar:" + base64.split(',')[1]);
+      } else {
+        console.warn("Unity WebViewObject not available.");
+      }
+    };
+
+    img.onerror = () => {
+      console.error("❌ Failed to load image from SVG blob.");
+    };
+
+    img.src = url;
+  }
+
+  window.onload = generateAvatar;
+</script>
 </body>
 </html>
